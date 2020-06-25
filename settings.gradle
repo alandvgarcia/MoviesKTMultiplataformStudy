@@ -1,0 +1,4 @@
+rootProject.name='KotlinMultiplataform'
+include ':app'
+include ':SharedCode'
+enableFeaturePreview('GRADLE_METADATA')
