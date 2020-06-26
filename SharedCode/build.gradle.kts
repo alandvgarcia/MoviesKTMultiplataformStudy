@@ -3,6 +3,28 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization") version "1.3.70"
+    id ("com.squareup.sqldelight")
+    id("com.android.library")
+}
+
+
+android {
+    compileSdkVersion(29)
+
+    defaultConfig {
+        minSdkVersion(17)
+        targetSdkVersion(29)
+        versionCode = 1
+        versionName = "1.0"
+    }
+}
+
+
+sqldelight {
+    database("MovieDatabase"){
+        packageName = "com.alandvgarcia.db"
+        sourceFolders = listOf("sqldelight")
+    }
 }
 
 kotlin {
@@ -22,7 +44,7 @@ kotlin {
         }
     }
 
-    jvm("android")
+    android()
 
     sourceSets{
          commonMain {
@@ -32,6 +54,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.0-RC")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.14.0")
                 implementation("io.ktor:ktor-client-serialization:1.3.1")
+                implementation("com.squareup.sqldelight:runtime:1.4.0")
+
             }
         }
 
@@ -42,6 +66,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0-RC")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
                 implementation("io.ktor:ktor-client-serialization-jvm:1.3.1")
+                implementation("com.squareup.sqldelight:android-driver:1.4.0")
             }
         }
 
@@ -51,7 +76,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.0-RC")
                 implementation("io.ktor:ktor-client-serialization-native:1.3.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.14.0")
-
+                implementation("com.squareup.sqldelight:native-driver:1.4.0")
             }
         }
     }

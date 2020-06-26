@@ -1,0 +1,14 @@
+CREATE TABLE movieEntity(
+    key INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL
+);
+
+insertItem:
+INSERT OR REPLACE INTO movieEntity (id, title) VALUES (?, ?);
+
+selectAll:
+SELECT * FROM movieEntity ORDER BY key;
+
+deleteAll:
+DELETE FROM movieEntity;
