@@ -1,9 +1,9 @@
 package com.alandvgarcia.kotlinmultiplataform.repository
 
+import com.alandvgarcia.kotlinmultiplataform.db.MovieDatabase
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
-import com.alandvgarcia.db.MovieDatabase
 
-internal actual fun cache(): MovieDatabase {
-    val driver = NativeSqliteDriver(MovieDatabase.Schema, "movies.db")
+internal actual fun database(): MovieDatabase {
+    val driver = NativeSqliteDriver(MovieDatabase.Schema, "movie.db")
     return MovieDatabase(driver)
 }

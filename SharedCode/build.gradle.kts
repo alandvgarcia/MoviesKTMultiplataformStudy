@@ -22,7 +22,7 @@ android {
 
 sqldelight {
     database("MovieDatabase"){
-        packageName = "com.alandvgarcia.db"
+        packageName = "com.alandvgarcia.kotlinmultiplataform.db"
         sourceFolders = listOf("sqldelight")
     }
 }

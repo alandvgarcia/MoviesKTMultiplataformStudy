@@ -1,5 +1,5 @@
 package com.alandvgarcia.kotlinmultiplataform.repository
 
-import com.alandvgarcia.db.MovieDatabase
+import com.alandvgarcia.kotlinmultiplataform.db.MovieDatabase
 
-internal expect fun cache(): MovieDatabase
+internal expect fun database(): MovieDatabase
