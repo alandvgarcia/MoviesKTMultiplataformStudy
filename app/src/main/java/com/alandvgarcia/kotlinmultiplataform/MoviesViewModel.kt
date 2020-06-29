@@ -11,14 +11,14 @@ import com.alandvgarcia.kotlinmultiplataform.db.MovieQueries
 import com.alandvgarcia.kotlinmultiplataform.model.Movie
 import com.alandvgarcia.kotlinmultiplataform.repository.DriverFactory
 import com.alandvgarcia.kotlinmultiplataform.repository.createDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class MoviesViewModel(application: Application) : AndroidViewModel(application){
+class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
     val movies = MutableLiveData<List<Movie>>()
-
-
+    val movieApi = MovieApi("8aa61303fe43973122e7b287a5c13c42")
 
     init {
 
@@ -26,14 +26,13 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application){
 
         val newMovie = MovieEntity(key = 1, id = 1, title = "Filme legal")
 
-        database.movieQueries.insertItem(newMovie.id,newMovie.title)
+        database.movieQueries.insertItem(newMovie.id, newMovie.title)
 
         println(database.movieQueries.selectAll().executeAsList())
 
+        viewModelScope.launch(Dispatchers.IO) {
+            movieApi.getPopularMovies {
 
-        MovieApi("8aa61303fe43973122e7b287a5c13c42")
-            .getPopularMovies {
-            viewModelScope.launch {
                 movies.postValue(it)
             }
         }

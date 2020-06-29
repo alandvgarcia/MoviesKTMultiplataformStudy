@@ -1,17 +1,19 @@
 package com.alandvgarcia.kotlinmultiplataform.api_services
 
 import com.alandvgarcia.kotlinmultiplataform.model.Movie
+import com.alandvgarcia.kotlinmultiplataform.model.ResultPaging
 import io.ktor.client.HttpClient
 import io.ktor.client.features.HttpTimeout
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.get
 import io.ktor.http.Url
-import kotlinx.coroutines.*
-import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import kotlinx.serialization.parseList
 import kotlin.coroutines.CoroutineContext
 
 internal expect val ApplicationDispatcher: CoroutineDispatcher
@@ -30,16 +32,17 @@ class MovieApi(private val apiKey: String, private val language: String = "en-US
     private var address =
         Url("https://api.themoviedb.org/3/movie/popular")
 
-    private val client = HttpClient {
-        install(HttpTimeout){
-            requestTimeoutMillis = TIME_OUT
-        }
-        install(JsonFeature) {
-            serializer = KotlinxSerializer()
+    private val client by lazy{
+        HttpClient {
+            install(HttpTimeout){
+                requestTimeoutMillis = TIME_OUT
+            }
+            install(JsonFeature) {
+                serializer = KotlinxSerializer()
+            }
         }
     }
 
-    @ImplicitReflectionSerializer
     fun getPopularMovies(page: Int = 1, callback: (List<Movie>) -> Unit) {
         launch {
             val result = client.get<String>(address){
@@ -47,11 +50,8 @@ class MovieApi(private val apiKey: String, private val language: String = "en-US
                 url.parameters.append("api_key", apiKey)
                 url.parameters.build()
             }
-            val json = Json(JsonConfiguration.Stable)
-            val jsonElement = json.parseJson(result)
-            val parsed =
-                json.parseList<Movie>(jsonElement.jsonObject.getArray("results").toString())
-            callback(parsed)
+
+         //   callback(result.getOrThrow().results)
             client.close()
         }
     }
