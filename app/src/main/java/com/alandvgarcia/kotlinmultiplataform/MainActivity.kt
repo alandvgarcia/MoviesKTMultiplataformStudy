@@ -8,6 +8,8 @@ import androidx.compose.remember
 import androidx.compose.state
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.ui.core.Text
 import androidx.ui.core.setContent
 import androidx.ui.foundation.VerticalScroller
@@ -24,9 +26,11 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    val viewModel by lazy {
+        ViewModelProviders.of(this).get(MoviesViewModel::class.java)
+    }
 
-        val viewModel = MoviesViewModel()
+    override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContent {
