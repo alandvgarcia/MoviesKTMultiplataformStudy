@@ -53,7 +53,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:1.3.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0")
-                implementation ("io.ktor:ktor-client-serialization:1.3.1")
+                implementation ("io.ktor:ktor-client-serialization:1.3.2")
                 implementation("com.squareup.sqldelight:runtime:1.4.0")
 
             }
@@ -65,7 +65,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:1.3.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
-                implementation ("io.ktor:ktor-client-serialization-jvm:1.3.1")
+                implementation ("io.ktor:ktor-client-serialization-jvm:1.3.2")
                 implementation("com.squareup.sqldelight:android-driver:1.4.0")
             }
         }
@@ -74,7 +74,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:1.3.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.3")
-                implementation ("io.ktor:ktor-client-serialization-native:1.3.1")
+                implementation ("io.ktor:ktor-client-serialization-native:1.3.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.20.0")
                 implementation("com.squareup.sqldelight:native-driver:1.4.0")
             }

@@ -45,13 +45,13 @@ class MovieApi(private val apiKey: String, private val language: String = "en-US
 
     fun getPopularMovies(page: Int = 1, callback: (List<Movie>) -> Unit) {
         launch {
-            val result = client.get<String>(address){
+            val result = client.get<ResultPaging<List<Movie>>>(address){
                 url.parameters.append("page", page.toString())
                 url.parameters.append("api_key", apiKey)
                 url.parameters.build()
             }
 
-         //   callback(result.getOrThrow().results)
+            callback(result.results)
             client.close()
         }
     }
