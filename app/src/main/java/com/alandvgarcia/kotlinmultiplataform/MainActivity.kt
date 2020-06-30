@@ -18,6 +18,7 @@ import androidx.ui.layout.LayoutPadding
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.surface.Card
 import androidx.ui.unit.dp
+import com.alandvgarcia.kotlinmultiplataform.db.MovieEntity
 import com.alandvgarcia.kotlinmultiplataform.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -68,9 +69,9 @@ fun <T> observe(data: LiveData<T>): T? {
 }
 
 @Composable
-fun Row(movie: Movie) {
+fun Row(movie: MovieEntity) {
     MaterialTheme {
-            Text(text = "${movie.title} (${movie.releaseDate})", modifier = LayoutPadding(16.dp))
+            Text(text = movie.title, modifier = LayoutPadding(16.dp))
 
     }
 }
