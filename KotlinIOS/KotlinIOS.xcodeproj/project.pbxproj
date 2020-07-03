@@ -189,7 +189,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd \"/Users/alanvargas/AndroidStudioProjects/KotlinMultiplataform/SharedCode/build/xcode-frameworks\"\n./gradlew :SharedCode:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd \"/Users/alanvargas/Documents/AndroidProjects/MoviesKTMultiplataformStudy/SharedCode/build/xcode-frameworks\"\n./gradlew :SharedCode:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -341,7 +341,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KotlinIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 3FPP57984C;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/alanvargas/AndroidStudioProjects/KotlinMultiplataform/SharedCode/build/xcode-frameworks";
+				FRAMEWORK_SEARCH_PATHS = "/Users/alanvargas/Documents/AndroidProjects/MoviesKTMultiplataformStudy/SharedCode/build/xcode-frameworks";
 				INFOPLIST_FILE = KotlinIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -362,7 +362,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KotlinIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 3FPP57984C;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "/Users/alanvargas/AndroidStudioProjects/KotlinMultiplataform/SharedCode/build/xcode-frameworks";
+				FRAMEWORK_SEARCH_PATHS = "/Users/alanvargas/Documents/AndroidProjects/MoviesKTMultiplataformStudy/SharedCode/build/xcode-frameworks";
 				INFOPLIST_FILE = KotlinIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

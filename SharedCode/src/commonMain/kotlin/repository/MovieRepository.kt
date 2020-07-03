@@ -1,5 +1,6 @@
 package com.alandvgarcia.kotlinmultiplataform.repository
 
+import com.alandvgarcia.kotlinmultiplataform.api_services.ApplicationDispatcher
 import com.alandvgarcia.kotlinmultiplataform.api_services.MovieApi
 import com.alandvgarcia.kotlinmultiplataform.db.MovieDatabase
 import com.alandvgarcia.kotlinmultiplataform.db.MovieEntity
@@ -14,11 +15,10 @@ class MovieRepository(private val movieDatabase: MovieDatabase, private val movi
 
     private val job = Job()
     override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Default
+        get() = job + ApplicationDispatcher
 
 
     fun getMovies(page: Int, callback: (List<MovieEntity>) -> Unit) {
-        launch {
             movieApi.getPopularMovies(page) {
                 val listMovies = mutableListOf<MovieEntity>()
                 it.forEach {
@@ -31,7 +31,6 @@ class MovieRepository(private val movieDatabase: MovieDatabase, private val movi
                 }
                 callback(listMovies)
             }
-        }
     }
 
     fun getSavedMovies(callback: (List<MovieEntity>) -> Unit){
