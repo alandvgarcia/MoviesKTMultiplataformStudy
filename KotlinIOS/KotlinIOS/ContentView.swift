@@ -16,9 +16,17 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(viewModel.resultsPaging, id: \.title){ movie in
-                Text(movie.title!)
+                Text(movie.title)
             }
         .navigationBarTitle("KotlinMultiplataform")
+            .navigationBarItems(leading: HStack{
+                Button("Request"){
+                    self.viewModel.request()
+                }
+                Button("Request DB"){
+                    self.viewModel.requestDb()
+                }
+            })
         }
         
     }
